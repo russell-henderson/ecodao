@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoDAO: Decentralized Environmental Action</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB;
+            color: #1E293B;
+        }
+        .brand-gradient-text {
+            background: linear-gradient(to right, #22C55E, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+        .flow-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .flow-arrow {
+            font-size: 2.5rem;
+            color: #6B7280;
+            margin: 0 1rem;
+            align-self: center;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-black brand-gradient-text mb-4">EcoDAO</h1>
+            <p class="text-xl md:text-2xl font-semibold text-slate-700">From Individual Action to Collective Impact</p>
+            <p class="max-w-3xl mx-auto mt-4 text-stone-600">Communities often struggle to coordinate environmental initiatives. EcoDAO transforms neighborhoods into environmental democracies where sustainable actions directly translate into governance power, empowering residents to shape their own green future.</p>
+        </header>
+
+        <section id="how-it-works" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">How It Works: The Eco-Loop</h2>
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <p class="text-center text-stone-600 mb-10">EcoDAO creates a self-reinforcing cycle that turns everyday sustainable choices into tangible community projects. This transparent, blockchain-powered process ensures that every action contributes to a larger, collective goal.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0">
+                    <div class="flow-step">
+                        <div class="flow-icon bg-[#22C55E]">🌱</div>
+                        <h3 class="font-bold text-lg">1. Act</h3>
+                        <p class="text-sm text-stone-500">Perform eco-actions like composting or cycling.</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block">➔</div>
+                    <div class="flow-step">
+                        <div class="flow-icon bg-[#3B82F6]">🔍</div>
+                        <h3 class="font-bold text-lg">2. Verify</h3>
+                        <p class="text-sm text-stone-500">Community peers verify your action via photo proof.</p>
+                    </div>
+                    <div class="flow-arrow hidden md:block">➔</div>
+                    <div class="flow-step">
+                        <div class="flow-icon bg-[#10B981]">🪙</div>
+                        <h3 class="font-bold text-lg">3. Earn</h3>
+                        <p class="text-sm text-stone-500">Receive GreenTokens as a reward for your contribution.</p>
+                    </div>
+                     <div class="flow-arrow hidden md:block">➔</div>
+                    <div class="flow-step">
+                        <div class="flow-icon bg-[#06B6D4]">🗳️</div>
+                        <h3 class="font-bold text-lg">4. Vote</h3>
+                        <p class="text-sm text-stone-500">Use tokens to vote on funding community projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="gamification" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Gamified Engagement</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-4">Action Rewards & Multipliers</h3>
+                    <p class="text-stone-600 mb-6 flex-grow">To encourage diverse environmental actions, EcoDAO applies multipliers to token rewards. High-impact community actions are rewarded the most, creating powerful incentives for collective efforts.</p>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="actionMultipliersChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold mb-4">Achievements & Milestones</h3>
+                    <p class="text-stone-600 mb-6">Long-term engagement is fostered through a system of achievements. Users earn unique badges for hitting key milestones, providing recognition and encouraging consistent participation.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center bg-gray-50 rounded-md p-4">
+                            <span class="text-4xl mr-4">💯</span>
+                            <div>
+                                <h4 class="font-semibold">Century Club</h4>
+                                <p class="text-sm text-stone-500">Awarded for completing 100 verified actions.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-gray-50 rounded-md p-4">
+                            <span class="text-4xl mr-4">🪙</span>
+                             <div>
+                                <h4 class="font-semibold">Token Titan</h4>
+                                <p class="text-sm text-stone-500">Awarded for earning over 1,000 GreenTokens.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-gray-50 rounded-md p-4">
+                           <span class="text-4xl mr-4">🏛️</span>
+                             <div>
+                                <h4 class="font-semibold">Governance Guru</h4>
+                                <p class="text-sm text-stone-500">Awarded for voting on 10 community proposals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="mb-20">
+             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Transparent & Secure Technology</h2>
+             <p class="text-center max-w-3xl mx-auto text-stone-600 mb-10">EcoDAO is built on a modern, robust technology stack designed for security, scalability, and an excellent user experience. Every component is chosen to support our core values of trust and transparency.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <span class="text-6xl">⛓️</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Blockchain Core</h3>
+                    <p class="text-stone-500">Solidity smart contracts on the Polygon Network ensure low-cost, transparent, and secure transactions and governance.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                     <span class="text-6xl">💻</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Modern Frontend</h3>
+                    <p class="text-stone-500">Built with Next.js, React, and TypeScript for a fast, reliable, and mobile-first user experience.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                     <span class="text-6xl">💾</span>
+                    <h3 class="text-xl font-bold mt-4 mb-2">Decentralized Storage</h3>
+                    <p class="text-stone-500">IPFS (InterPlanetary File System) is used for storing action photos, ensuring data integrity and censorship resistance.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="governance" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Governance in Action</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col">
+                    <h3 class="text-2xl font-bold mb-4">Proposal Quorum</h3>
+                    <p class="text-stone-600 mb-6 flex-grow">To ensure that decisions represent the community's will, a proposal must meet a 10% quorum of the total token supply. This requirement ensures legitimacy and prevents small groups from passing proposals without broader support.</p>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="quorumChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                     <h3 class="text-2xl font-bold mb-4 text-center lg:text-left">The Proposal Lifecycle</h3>
+                     <p class="text-stone-600 mb-6 text-center lg:text-left">Each proposal follows a transparent and structured timeline to allow for community discussion, thoughtful voting, and secure execution of the outcome.</p>
+                    <div class="relative pl-8 border-l-2 border-slate-200 space-y-10 py-4">
+                        <div class="relative">
+                            <div class="absolute -left-[38px] top-1/2 -translate-y-1/2 w-8 h-8 bg-[#3B82F6] text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <h4 class="font-semibold text-lg">Submit Proposal</h4>
+                            <p class="text-sm text-stone-500">A community member submits a new project idea for funding.</p>
+                        </div>
+                         <div class="relative">
+                            <div class="absolute -left-[38px] top-1/2 -translate-y-1/2 w-8 h-8 bg-[#06B6D4] text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <h4 class="font-semibold text-lg">Voting Period (7 Days)</h4>
+                            <p class="text-sm text-stone-500">The community votes on the proposal using their GreenTokens.</p>
+                        </div>
+                         <div class="relative">
+                            <div class="absolute -left-[38px] top-1/2 -translate-y-1/2 w-8 h-8 bg-[#10B981] text-white rounded-full flex items-center justify-center font-bold">3</div>
+                            <h4 class="font-semibold text-lg">Execution</h4>
+                            <p class="text-sm text-stone-500">If passed, funds are released from the treasury to the project.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="impact-and-future" class="text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12">Impact & Future Vision</h2>
+            <p class="text-center max-w-3xl mx-auto text-stone-600 mb-10">EcoDAO is more than a platform; it's a scalable model for environmental democracy. Our success will be measured by tangible community impact and our ability to empower more people worldwide.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                     <h3 class="text-2xl font-bold mb-4">Key Performance Indicators</h3>
+                     <p class="text-stone-600 mb-6">We track key metrics to measure the health and effectiveness of the ecosystem, focusing on growth, engagement, and real-world results.</p>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="kpiChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8 text-left">
+                     <h3 class="text-2xl font-bold mb-4">The Roadmap Ahead</h3>
+                     <p class="text-stone-600 mb-6">The journey is just beginning. Our roadmap focuses on expanding features, scaling the platform, and integrating new technologies to maximize our collective impact.</p>
+                     <ul class="space-y-4">
+                        <li class="p-4 rounded-md bg-gray-50">
+                            <h4 class="font-bold text-lg text-[#22C55E]">Phase 1: Foundation</h4>
+                            <p class="text-sm text-stone-500">Core governance contracts, action submission, and voting system. (Complete)</p>
+                        </li>
+                        <li class="p-4 rounded-md bg-gray-50">
+                            <h4 class="font-bold text-lg text-[#3B82F6]">Phase 2: Expansion</h4>
+                            <p class="text-sm text-stone-500">Mobile app development, multi-community support, and advanced impact analytics.</p>
+                        </li>
+                        <li class="p-4 rounded-md bg-gray-50">
+                            <h4 class="font-bold text-lg text-[#1E293B]">Phase 3: Integration</h4>
+                            <p class="text-sm text-stone-500">Partnerships with local governments, AI-powered verification, and carbon credit marketplace integration.</p>
+                        </li>
+                     </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center py-8">
+        <p class="text-stone-500">Building sustainable communities, one vote at a time. 🌱✊</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const wrapLabel = (label, maxLength = 16) => {
+                if (typeof label !== 'string' || label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).trim().length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                }
+                if (currentLine) {
+                    lines.push(currentLine.trim());
+                }
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const sharedChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                         labels: {
+                            color: '#1E293B',
+                            font: {
+                                family: 'Inter',
+                                size: 14,
+                            },
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#E5E7EB',
+                        },
+                        ticks: {
+                           color: '#6B7280',
+                           font: { family: 'Inter' }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false,
+                        },
+                         ticks: {
+                           color: '#6B7280',
+                           font: { family: 'Inter' }
+                        }
+                    }
+                }
+            };
+
+            const actionMultipliersCtx = document.getElementById('actionMultipliersChart').getContext('2d');
+            const actionLabels = ['Home Actions', 'Transport Actions', 'Community Actions'];
+            new Chart(actionMultipliersCtx, {
+                type: 'bar',
+                data: {
+                    labels: actionLabels.map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Token Reward Multiplier',
+                        data: [1.2, 1.5, 2.0],
+                        backgroundColor: ['#3B82F6', '#06B6D4', '#22C55E'],
+                        borderColor: ['#3B82F6', '#06B6D4', '#22C55E'],
+                        borderWidth: 1
+                    }]
+                },
+                options: { ...sharedChartOptions }
+            });
+
+            const quorumCtx = document.getElementById('quorumChart').getContext('2d');
+            new Chart(quorumCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Quorum Required', 'Remaining Supply'],
+                    datasets: [{
+                        data: [10, 90],
+                        backgroundColor: ['#22C55E', '#E5E7EB'],
+                        hoverOffset: 4
+                    }]
+                },
+                 options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#1E293B',
+                                font: { family: 'Inter', size: 14 }
+                            }
+                        },
+                        tooltip: {
+                           callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        }
+                    }
+                }
+            });
+
+            const kpiCtx = document.getElementById('kpiChart').getContext('2d');
+            const kpiLabels = ['User Engagement', 'Projects Funded', 'Community Growth', 'Action Velocity', 'Governance Participation'];
+            new Chart(kpiCtx, {
+                type: 'radar',
+                data: {
+                    labels: kpiLabels.map(label => wrapLabel(label)),
+                    datasets: [{
+                        label: 'Target KPIs',
+                        data: [85, 70, 90, 75, 80],
+                        fill: true,
+                        backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                        borderColor: '#22C55E',
+                        pointBackgroundColor: '#22C55E',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#22C55E'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                         legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: tooltipTitleCallback
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#E5E7EB' },
+                            grid: { color: '#E5E7EB' },
+                            pointLabels: { 
+                                font: { family: 'Inter', size: 12 },
+                                color: '#1E293B'
+                            },
+                            ticks: {
+                                backdropColor: '#F9FAFB',
+                                color: '#6B7280',
+                                font: { family: 'Inter' }
+                            }
+                        }
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

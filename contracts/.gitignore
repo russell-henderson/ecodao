@@ -1,0 +1,27 @@
+# Hardhat .gitignore
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+cache/
+artifacts/
+typechain-types/
+
+# Environment variables
+.env
+.env.local
+
+# Gas reports
+gas-report.txt
+
+# Coverage reports
+coverage/
+coverage.json
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
