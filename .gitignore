@@ -55,6 +55,7 @@ contracts/gas-report.txt
 *.swp
 *.swo
 *~
+.cursor
 
 # ===========================================
 # OS GENERATED FILES
