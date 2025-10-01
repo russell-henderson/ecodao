@@ -1,75 +1,97 @@
-# EcoDAO Tasklist – Phase 2: Final QA & Demo Prep
 
-## 1. En## 7. Stretch / Bonus Enhancements
-- [x] Add "Demo Mode" toggle:
-  - [x] Preloaded mock wallet + sample proposals.
-- [x] Add tooltip explanations:
-  - [x] "What is a proposal?"  
-  - [x] "How do rewards work?"
-- [ ] If time permits: add a stubbed AI verification placeholder for future roadmap.d Testing (High Priority)
-- [ ] Run full flow on deployed frontend + Polygon Amoy:
-  - [ ] Connect wallet and fund with test MATIC.
-  - [ ] Submit at least 3 different actions (TREE_PLANTING, CYCLING, COMPOSTING).
-  - [ ] Verify token rewards are minted correctly.
-  - [ ] Confirm governance proposals are created for each action.
-  - [ ] Vote on proposals and ensure results update in UI.
-- [ ] Record any transaction failures, gas anomalies, or UI misalignments.
+# `task-list.md`
+
+## 🌱 EcoDAO Phase 4 – QA, Deployment, and Submission Prep
+
+### 1. **Smart Contract Deployment & Verification**
+
+* [x] Deploy **EcoPoints**, **ProjectRegistry**, and **ChallengeRegistry** contracts to **Polygon Amoy testnet**
+* [x] Update `.env` and frontend config with deployed addresses
+* [ ] Verify contracts on **Polygonscan** using `hardhat-etherscan` plugin
+* [ ] Ensure **constructor args** and metadata are properly published
+* [x] Confirm ABI matches deployed contracts (regenerate if needed)
 
 ---
 
-## 2. Governance Integration QA
-- [ ] Investigate why proposals are not always visible:
-  - [ ] Check Governor contract events (`ProposalCreated`).
-  - [ ] Confirm frontend is fetching proposals from correct contract address.
-  - [ ] Ensure ABI matches deployed Governor contract.
-  - [ ] Test voting lifecycle: Pending → Active → Succeeded/Defeated.
-- [ ] Fix proposal → UI mapping logic so each submitted action is traceable in governance.
+### 2. **Frontend Integration QA**
+
+* [x] Replace placeholder contract addresses with deployed testnet addresses
+* [ ] Run **end-to-end QA flow**:
+
+  * [ ] Create new project → confirm stored in ProjectRegistry
+  * [ ] Contribute ECO → check balance deduction + XP earned in EcoPoints
+  * [ ] Join challenge → XP granted instantly and reflected on leaderboard
+  * [ ] Verify leaderboard updates correctly with multiple accounts
+  * [ ] Confirm event listeners update UI in real-time (funding progress, XP gain)
+* [ ] Add **toast notifications** for success/failure of blockchain transactions
+* [ ] Fix any async loading states (spinners, error handling for rejected txs)
 
 ---
 
-## 3. Contract Verification
-- [ ] Retry contract verification on Polygonscan:
-  - [ ] Ensure compiler version + optimizer settings match `hardhat.config.js`.
-  - [ ] Use `npx hardhat verify` with correct constructor args.
-  - [ ] If still blocked, use Polygonscan “flatten contract” + manual verify.
-- [ ] Document verified contract links in README + frontend footer.
+### 3. **UI/UX Polish**
+
+* [ ] Projects Page:
+
+  * [ ] Show **funding progress bar** (% funded vs target)
+  * [ ] Add **XP reward tooltip** when hovering over contribute button
+* [ ] Challenges Page:
+
+  * [ ] Show **joined status** (badge / highlight) for active user
+  * [ ] Display **XP earned history** (joined challenges → XP log)
+* [ ] Leaderboard:
+
+  * [ ] Add **profile avatars (blockies/jazzicons)** next to addresses
+  * [ ] Display **XP delta** (recent gains highlighted in green)
+* [ ] Global:
+
+  * [ ] Ensure mobile responsiveness for all pages
+  * [ ] Standardize button styles (primary, secondary, disabled states)
 
 ---
 
-## 4. Frontend & UI Testing
-- [ ] Validate on multiple browsers (Chrome, Brave, Edge).
-- [ ] Test mobile responsiveness (small viewport for Action submission + Governance pages).
-- [ ] Confirm transaction states (pending, success, fail) all render properly.
-- [ ] Fix any broken styles or inconsistent layouts.
+### 4. **Bug Fixing & Testing**
+
+* [ ] Write **frontend integration tests** (Playwright or Jest + wagmi mocks)
+
+  * Project creation → stored in registry
+  * Contribution → XP balance updated
+  * Challenge join → XP awarded
+  * Leaderboard → correct ranking order
+* [ ] Run **manual QA with multiple test accounts** on Amoy
+* [ ] Check for **edge cases**:
+
+  * [ ] Contributing < 100 ECO (should round down XP)
+  * [ ] Project fully funded → new contributions blocked
+  * [ ] Attempting to re-join a challenge → rejected
 
 ---
 
-## 5. Demo Materials
-- [ ] Capture demo screenshots:
-  - [ ] Landing Page
-  - [ ] Submit Action with uploaded proof
-  - [ ] Governance proposal created from action
-  - [ ] Voting results screen
-- [ ] Prepare demo video:
-  - [ ] Script: Problem → Solution → Live Demo → Roadmap
-  - [ ] Record live action submission + governance voting
-  - [ ] Add narration with EcoDAO tagline: *“The first neighborhood climate democracy.”*
-- [ ] Bundle screenshots + video link for Devpost submission.
+### 5. **Hackathon Submission Prep**
+
+* [ ] Record **demo video (3–4 min)**
+
+  * [ ] Intro: problem → EcoDAO solution
+  * [ ] Walkthrough: create project, contribute ECO, earn XP, join challenge, leaderboard
+  * [ ] End with vision for scaling EcoDAO to neighborhoods
+* [ ] Capture **high-quality screenshots** of:
+
+  * Project creation modal + card with live funding
+  * Contribution flow with XP rewards
+  * Challenges page with joined state
+  * Leaderboard with top contributors
+* [ ] Update `README.md` with:
+
+  * [ ] Verified contract addresses + Polygonscan links
+  * [ ] Instructions for connecting to Amoy testnet
+  * [ ] Demo screenshots + video link
+  * [ ] Devpost submission details (repo link, deployed site link, problem/solution summary)
 
 ---
 
-## 6. Critical Fixes Before Submission
-- [ ] Resolve any contract/transaction blockers found in testing.
-- [ ] Patch governor integration if proposals do not appear consistently.
-- [ ] Double-check all contract addresses in `.env` and frontend config.
+### 6. **Final Review**
 
----
-
-## 7. Stretch / Bonus Enhancements
-- [ ] Add “Demo Mode” toggle:
-  - [ ] Preloaded mock wallet + sample proposals.
-- [ ] Add tooltip explanations:
-  - [ ] “What is a proposal?”  
-  - [ ] “How do rewards work?”
-- [ ] If time permits: add a stubbed AI verification placeholder for future roadmap.
+* [ ] Run **end-to-end demo** live before submission
+* [ ] Double-check `.env.example` and `.gitignore` hygiene
+* [ ] Confirm **Vercel deployment** works with testnet contracts
+* [ ] Ensure **docs, repo, and demo video** are in sync
 
