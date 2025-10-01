@@ -6,11 +6,14 @@
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test",
-    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:local": "hardhat run scripts/deploy.ts --network hardhat",
     "deploy:amoy": "hardhat run scripts/deploy.ts --network amoy",
-    "deploy:mumbai": "hardhat run scripts/deploy.ts --network mumbai",
     "deploy:polygon": "hardhat run scripts/deploy.ts --network polygon",
-    "verify:mumbai": "hardhat verify --network mumbai",
+    "setup:local": "npm run deploy:local && echo 'Deploy complete! Run: cd ../frontend && npm run dev'",
+    "setup:amoy": "npm run deploy:amoy && echo 'Deploy complete! Connect wallet to Amoy testnet'",
+    "check": "node scripts/check-environment.js",
+    "check:amoy": "npx hardhat run scripts/test-env.js --network amoy",
+    "verify:amoy": "hardhat verify --network amoy",
     "verify:polygon": "hardhat verify --network polygon",
     "coverage": "hardhat coverage",
     "gas-report": "REPORT_GAS=true hardhat test"
@@ -40,5 +43,8 @@
     "ts-node": "^10.9.2",
     "typechain": "^8.3.2",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
   }
 }

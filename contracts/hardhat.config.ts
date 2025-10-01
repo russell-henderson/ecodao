@@ -1,6 +1,7 @@
-const { HardhatUserConfig } = require("hardhat/config");
-require("@nomicfoundation/hardhat-toolbox");
-require("@nomicfoundation/hardhat-verify");
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-verify";
+import "dotenv/config";
 
 const config = {
   solidity: {
@@ -14,6 +15,10 @@ const config = {
   },
   networks: {
     hardhat: {
+      chainId: 1337,
+    },
+    localhost: {
+      url: "http://127.0.0.1:8545",
       chainId: 1337,
     },
     amoy: {
@@ -45,4 +50,4 @@ const config = {
   },
 };
 
-module.exports = config;
+export default config;
