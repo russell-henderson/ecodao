@@ -4,7 +4,7 @@
 
 EcoDAO empowers local communities to democratically fund and manage sustainability initiatives through blockchain governance and token-based incentives.
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/russell-henderson/verdao)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/russell-henderson/ecodao)
 [![Smart Contracts](https://img.shields.io/badge/contracts-deployed-blue)](https://polygonscan.com/)
 [![Frontend](https://img.shields.io/badge/frontend-live-green)](https://ecodao.adaptechdesigns.com)
 [![License](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
