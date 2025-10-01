@@ -77,10 +77,10 @@ describe("EcoDAO Smart Contracts", function () {
 
     it("Should allow minting by ActionRewards", async function () {
       // Test that ActionRewards can mint tokens through action verification
-      const actionType = 0; // COMPOSTING
-      const ipfsHash = "QmTestHash123";
+      const actionType = "COMPOSTING";
+      const metadataURI = "QmTestHash123";
       
-      await actionRewards.connect(user1).submitAction(actionType, ipfsHash);
+      await actionRewards.connect(user1).submitAction(actionType, metadataURI);
       await actionRewards.connect(verifier).verifyAction(0, true, "Verified action");
       
       const expectedReward = ethers.parseEther("5"); // 5 EcoTokens for composting
@@ -96,23 +96,23 @@ describe("EcoDAO Smart Contracts", function () {
 
   describe("ActionRewards", function () {
     it("Should allow action submission", async function () {
-      const actionType = 0; // COMPOSTING
-      const ipfsHash = "QmTestHash123";
+      const actionType = "COMPOSTING";
+      const metadataURI = "QmTestHash123";
       
-      await actionRewards.connect(user1).submitAction(actionType, ipfsHash);
+      await actionRewards.connect(user1).submitAction(actionType, metadataURI);
       
       const action = await actionRewards.getAction(0);
       expect(action.user).to.equal(user1.address);
       expect(action.actionType).to.equal(actionType);
-      expect(action.ipfsHash).to.equal(ipfsHash);
+      expect(action.metadataURI).to.equal(metadataURI);
       expect(action.status).to.equal(0); // PENDING
     });
 
     it("Should allow action verification", async function () {
-      const actionType = 0; // COMPOSTING
-      const ipfsHash = "QmTestHash123";
+      const actionType = "COMPOSTING";
+      const metadataURI = "QmTestHash123";
       
-      await actionRewards.connect(user1).submitAction(actionType, ipfsHash);
+      await actionRewards.connect(user1).submitAction(actionType, metadataURI);
       await actionRewards.connect(verifier).verifyAction(0, true, "Verified action");
       
       const action = await actionRewards.getAction(0);
@@ -121,24 +121,24 @@ describe("EcoDAO Smart Contracts", function () {
     });
 
     it("Should reward tokens for verified actions", async function () {
-      const actionType = 0; // COMPOSTING
-      const ipfsHash = "QmTestHash123";
+      const actionType = "COMPOSTING";
+      const metadataURI = "QmTestHash123";
       const expectedReward = ethers.parseEther("5"); // 5 EcoTokens for composting
       
-      await actionRewards.connect(user1).submitAction(actionType, ipfsHash);
+      await actionRewards.connect(user1).submitAction(actionType, metadataURI);
       await actionRewards.connect(verifier).verifyAction(0, true, "Verified action");
       
       expect(await greenToken.balanceOf(user1.address)).to.equal(expectedReward);
     });
 
     it("Should enforce cooldown period", async function () {
-      const actionType = 0; // COMPOSTING
-      const ipfsHash = "QmTestHash123";
+      const actionType = "COMPOSTING";
+      const metadataURI = "QmTestHash123";
       
-      await actionRewards.connect(user1).submitAction(actionType, ipfsHash);
+      await actionRewards.connect(user1).submitAction(actionType, metadataURI);
       
       await expect(
-        actionRewards.connect(user1).submitAction(actionType, ipfsHash)
+        actionRewards.connect(user1).submitAction(actionType, metadataURI)
       ).to.be.revertedWith("ActionRewards: Cooldown period not met");
     });
   });

@@ -1,12 +1,21 @@
 # EcoDAO 🌱
 
-**Decentralized Community Governance for Environmental Action**
+**The First Neighborhood Climate Democracy - Empowering Communities to Act and Decide Together**
+
+*Submitted to [Hackathon Name] - Decentralized Community Governance for Environmental Action*
 
 EcoDAO empowers local communities to democratically fund and manage sustainability initiatives through blockchain governance and token-based incentives.
 
+## 🎥 Demo & Links
+
+- **🌐 Live Demo**: http://localhost:3000 (Connect wallet to Polygon Amoy)
+- **📱 Demo Video**: [Coming Soon]
+- **📊 Contract Addresses**: [Deployed on Polygon Amoy](#deployed-contracts)
+- **📖 Documentation**: [Full Setup Guide](COMPLETE_SETUP_GUIDE.md)
+
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/russell-henderson/ecodao)
-[![Smart Contracts](https://img.shields.io/badge/contracts-deployed-blue)](https://polygonscan.com/)
-[![Frontend](https://img.shields.io/badge/frontend-live-green)](https://ecodao.adaptechdesigns.com)
+[![Smart Contracts](https://img.shields.io/badge/contracts-deployed-blue)](https://amoy.polygonscan.com/)
+[![Frontend](https://img.shields.io/badge/frontend-live-green)](http://localhost:3000)
 [![License](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
 
 ---
@@ -282,6 +291,24 @@ cd frontend
 npm run build
 vercel --prod
 ```
+
+---
+
+## 📊 Deployed Contracts
+
+### **Polygon Amoy Testnet**
+
+| Contract | Address | Polygonscan Link |
+|----------|---------|------------------|
+| **GreenToken** | `0xB6b52DB513Ace728bEdDc047576172796C8DC41f` | [View Contract](https://amoy.polygonscan.com/address/0xB6b52DB513Ace728bEdDc047576172796C8DC41f) |
+| **ActionRewards** | `0xfce5C3168431fD6796cb5595c017594beEB310aC` | [View Contract](https://amoy.polygonscan.com/address/0xfce5C3168431fD6796cb5595c017594beEB310aC) |
+| **GreenGovernor** | `0x275C414D5E2D454830FD2edB11B2b2E998cC41bE` | [View Contract](https://amoy.polygonscan.com/address/0x275C414D5E2D454830FD2edB11B2b2E998cC41bE) |
+| **CommunityTreasury** | `0xD79C048fa009b3D2E8CAd84238f1BC966f7Eec47` | [View Contract](https://amoy.polygonscan.com/address/0xD79C048fa009b3D2E8CAd84238f1BC966f7Eec47) |
+| **TimelockController** | `0xb90F8C5B68EcD7d66485B8cF560d5064C46746C9` | [View Contract](https://amoy.polygonscan.com/address/0xb90F8C5B68EcD7d66485B8cF560d5064C46746C9) |
+
+> **Network**: Polygon Amoy (Chain ID: 80002)  
+> **Status**: ✅ Deployed and Operational  
+> **Verification**: ⏳ In Progress
 
 ---
 

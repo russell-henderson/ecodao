@@ -1,17 +1,19 @@
 import hre from "hardhat";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 
+const { ethers } = hre;
+
 async function main() {
   console.log("🚀 Starting EcoDAO contract deployment...\n");
 
   // Get the deployer account
-  const [deployer] = await hre.ethers.getSigners();
+  const [deployer] = await ethers.getSigners();
   console.log("Deploying contracts with account:", deployer.address);
-  console.log("Account balance:", hre.ethers.formatEther(await hre.ethers.provider.getBalance(deployer.address)), "ETH\n");
+  console.log("Account balance:", ethers.formatEther(await ethers.provider.getBalance(deployer.address)), "ETH\n");
 
   // Deploy GreenToken
   console.log("📝 Deploying GreenToken...");
-  const GreenToken = await hre.ethers.getContractFactory("GreenToken");
+  const GreenToken = await ethers.getContractFactory("GreenToken");
   const greenToken = await GreenToken.deploy(
     "EcoToken",
     "ECO",
@@ -70,6 +72,11 @@ async function main() {
   await communityTreasury.waitForDeployment();
   const communityTreasuryAddress = await communityTreasury.getAddress();
   console.log("✅ CommunityTreasury deployed to:", communityTreasuryAddress);
+
+  // Set governor in ActionRewards for proposal creation
+  console.log("🔗 Setting governor in ActionRewards...");
+  await actionRewards.setGovernor(greenGovernorAddress);
+  console.log("✅ Governor set in ActionRewards");
 
   // Set up initial verifiers
   console.log("👥 Setting up initial verifiers...");

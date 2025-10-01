@@ -1,5 +1,8 @@
 // Setup script for testing governance and proposals
 import hre from "hardhat";
+import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
+
+const { ethers } = hre;
 
 async function main() {
   console.log("🔧 Setting up EcoDAO for governance testing...\n");
@@ -27,7 +30,7 @@ async function main() {
   }
 
   // Connect to contracts
-  const GreenToken = await ethers.getContractFactory("GreenToken");
+  const GreenToken = await hre.ethers.getContractFactory("GreenToken");
   const ActionRewards = await ethers.getContractFactory("ActionRewards");
   const GreenGovernor = await ethers.getContractFactory("GreenGovernor");
   

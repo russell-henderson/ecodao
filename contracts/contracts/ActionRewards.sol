@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./GreenToken.sol";
+import "./GreenGovernor.sol";
 
 /**
  * @title ActionRewards
@@ -38,13 +39,16 @@ contract ActionRewards is AccessControl, ReentrancyGuard, Pausable {
     // Structs
     struct Action {
         address user;
-        string ipfsHash;
-        uint256 rewardAmount;
-        ActionType actionType;
-        VerificationStatus status;
+        string actionType; // String representation for governance proposals
+        string metadataURI; // IPFS hash or metadata URI
         uint256 timestamp;
+        ActionType enumActionType; // Keep enum for rewards calculation
+        string ipfsHash; // Backward compatibility
+        uint256 rewardAmount;
+        VerificationStatus status;
         address verifier;
         string verificationNote;
+        uint256 proposalId; // Link to governance proposal
     }
     
     struct Verifier {
@@ -60,6 +64,7 @@ contract ActionRewards is AccessControl, ReentrancyGuard, Pausable {
     Counters.Counter private _verifierCounter;
     
     GreenToken public immutable greenToken;
+    GreenGovernor public greenGovernor; // Governor contract for proposals
     
     // Mappings
     mapping(uint256 => Action) public actions;
@@ -68,6 +73,7 @@ contract ActionRewards is AccessControl, ReentrancyGuard, Pausable {
     mapping(ActionType => uint256) public actionRewards;
     mapping(address => uint256) public userActionCount;
     mapping(address => uint256) public lastActionTime;
+    mapping(uint256 => uint256) public proposalToAction; // Map proposal ID to action ID
     
     // Constants
     uint256 public constant COOLDOWN_PERIOD = 1 hours; // Anti-spam cooldown
@@ -78,9 +84,14 @@ contract ActionRewards is AccessControl, ReentrancyGuard, Pausable {
     event ActionSubmitted(
         uint256 indexed actionId,
         address indexed user,
-        ActionType actionType,
-        string ipfsHash,
-        uint256 rewardAmount
+        string actionType,
+        string metadataURI
+    );
+    
+    event ProposalCreatedForAction(
+        uint256 indexed actionId,
+        uint256 indexed proposalId,
+        string description
     );
     
     event ActionVerified(
@@ -130,33 +141,48 @@ contract ActionRewards is AccessControl, ReentrancyGuard, Pausable {
         actionRewards[ActionType.SUSTAINABLE_TRANSPORT] = 2 * 10**18; // 2 EcoTokens
         actionRewards[ActionType.RECYCLING] = 1 * 10**18;         // 1 EcoToken
     }
+
+    /**
+     * @dev Set the governor contract address (can only be called by admin)
+     * @param _governor Address of the GreenGovernor contract
+     */
+    function setGovernor(address _governor) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(_governor != address(0), "ActionRewards: Invalid governor address");
+        greenGovernor = GreenGovernor(payable(_governor));
+    }
     
     /**
-     * @dev Submit an environmental action for verification
-     * @param actionType The type of action being submitted
-     * @param ipfsHash IPFS hash of the action photo/proof
+     * @dev Submit an environmental action for verification and governance
+     * @param actionType The type of action being submitted (string)
+     * @param metadataURI IPFS hash or metadata URI of the action proof
      */
-    function submitAction(ActionType actionType, string calldata ipfsHash)
+    function submitAction(string calldata actionType, string calldata metadataURI)
         external
         whenNotPaused
         cooldownCheck
         nonReentrant
     {
-        require(bytes(ipfsHash).length > 0, "ActionRewards: IPFS hash required");
-        require(actionType <= ActionType.RECYCLING, "ActionRewards: Invalid action type");
+        require(bytes(actionType).length > 0, "ActionRewards: Action type required");
+        require(bytes(metadataURI).length > 0, "ActionRewards: Metadata URI required");
         
         uint256 actionId = _actionCounter.current();
-        uint256 rewardAmount = actionRewards[actionType];
+        
+        // Convert string to enum for reward calculation (simplified mapping)
+        ActionType enumType = _stringToActionType(actionType);
+        uint256 rewardAmount = actionRewards[enumType];
         
         actions[actionId] = Action({
             user: msg.sender,
-            ipfsHash: ipfsHash,
-            rewardAmount: rewardAmount,
             actionType: actionType,
-            status: VerificationStatus.PENDING,
+            metadataURI: metadataURI,
             timestamp: block.timestamp,
+            enumActionType: enumType,
+            ipfsHash: metadataURI, // Backward compatibility
+            rewardAmount: rewardAmount,
+            status: VerificationStatus.PENDING,
             verifier: address(0),
-            verificationNote: ""
+            verificationNote: "",
+            proposalId: 0 // Will be set when proposal is created
         });
         
         userActions[msg.sender].push(actionId);
@@ -164,7 +190,87 @@ contract ActionRewards is AccessControl, ReentrancyGuard, Pausable {
         
         _actionCounter.increment();
         
-        emit ActionSubmitted(actionId, msg.sender, actionType, ipfsHash, rewardAmount);
+        emit ActionSubmitted(actionId, msg.sender, actionType, metadataURI);
+        
+        // Create governance proposal if governor is set
+        if (address(greenGovernor) != address(0)) {
+            _createProposalForAction(actionId, actionType, metadataURI);
+        }
+    }
+
+    /**
+     * @dev Create a governance proposal for an action
+     * @param actionId The action ID
+     * @param actionType The action type string
+     * @param metadataURI The metadata URI
+     */
+    function _createProposalForAction(
+        uint256 actionId,
+        string memory actionType,
+        string memory metadataURI
+    ) internal {
+        string memory description = string(abi.encodePacked(
+            "Approve Environmental Action: ", 
+            actionType,
+            "\\n\\nProof: ",
+            metadataURI,
+            "\\n\\nSubmitted by: ",
+            _addressToString(msg.sender)
+        ));
+        
+        // Create empty proposal (no specific execution needed for verification votes)
+        address[] memory targets = new address[](0);
+        uint256[] memory values = new uint256[](0);
+        bytes[] memory calldatas = new bytes[](0);
+        
+        uint256 proposalId = greenGovernor.propose(targets, values, calldatas, description);
+        
+        // Update action with proposal ID
+        actions[actionId].proposalId = proposalId;
+        proposalToAction[proposalId] = actionId;
+        
+        emit ProposalCreatedForAction(actionId, proposalId, description);
+    }
+
+    /**
+     * @dev Convert string action type to enum (simplified mapping)
+     * @param actionType String representation of action type
+     * @return ActionType enum value
+     */
+    function _stringToActionType(string memory actionType) internal pure returns (ActionType) {
+        bytes32 actionHash = keccak256(abi.encodePacked(actionType));
+        
+        if (actionHash == keccak256("COMPOSTING")) return ActionType.COMPOSTING;
+        if (actionHash == keccak256("CYCLING")) return ActionType.CYCLING;
+        if (actionHash == keccak256("ENERGY_SAVING")) return ActionType.ENERGY_SAVING;
+        if (actionHash == keccak256("WASTE_REDUCTION")) return ActionType.WASTE_REDUCTION;
+        if (actionHash == keccak256("WATER_CONSERVATION")) return ActionType.WATER_CONSERVATION;
+        if (actionHash == keccak256("RENEWABLE_ENERGY")) return ActionType.RENEWABLE_ENERGY;
+        if (actionHash == keccak256("TREE_PLANTING")) return ActionType.TREE_PLANTING;
+        if (actionHash == keccak256("CLEANUP_EVENT")) return ActionType.CLEANUP_EVENT;
+        if (actionHash == keccak256("SUSTAINABLE_TRANSPORT")) return ActionType.SUSTAINABLE_TRANSPORT;
+        if (actionHash == keccak256("RECYCLING")) return ActionType.RECYCLING;
+        
+        // Default to RECYCLING for unknown types
+        return ActionType.RECYCLING;
+    }
+
+    /**
+     * @dev Convert address to string
+     * @param addr The address to convert
+     * @return String representation of the address
+     */
+    function _addressToString(address addr) internal pure returns (string memory) {
+        bytes32 value = bytes32(uint256(uint160(addr)));
+        bytes memory alphabet = "0123456789abcdef";
+        bytes memory str = new bytes(42);
+        str[0] = '0';
+        str[1] = 'x';
+        for (uint256 i = 0; i < 20; i++) {
+            str[2+i*2] = alphabet[uint8(value[i + 12] >> 4)];
+            str[3+i*2] = alphabet[uint8(value[i + 12] & 0x0f)];
+        }
+        return string(str);
     }
     
     /**
