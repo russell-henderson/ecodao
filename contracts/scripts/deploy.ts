@@ -1,4 +1,3 @@
-import { ethers } from "hardhat";
 import hre from "hardhat";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 
@@ -6,13 +5,13 @@ async function main() {
   console.log("🚀 Starting EcoDAO contract deployment...\n");
 
   // Get the deployer account
-  const [deployer] = await ethers.getSigners();
+  const [deployer] = await hre.ethers.getSigners();
   console.log("Deploying contracts with account:", deployer.address);
-  console.log("Account balance:", ethers.formatEther(await ethers.provider.getBalance(deployer.address)), "ETH\n");
+  console.log("Account balance:", hre.ethers.formatEther(await hre.ethers.provider.getBalance(deployer.address)), "ETH\n");
 
   // Deploy GreenToken
   console.log("📝 Deploying GreenToken...");
-  const GreenToken = await ethers.getContractFactory("GreenToken");
+  const GreenToken = await hre.ethers.getContractFactory("GreenToken");
   const greenToken = await GreenToken.deploy(
     "EcoToken",
     "ECO",
