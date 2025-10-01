@@ -7,6 +7,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ## **Core Gamification Elements**
 
 ### **1. Token Economy - The Foundation**
+
 ```typescript
 // Visual token representation
 <TokenBalance 
@@ -17,6 +18,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ```
 
 **Visual Design:**
+
 - **Animated token counter** that smoothly increments with new actions
 - **Glowing green particles** that flow from action submissions to token balance
 - **Progress rings** showing daily/weekly earning progress
@@ -29,6 +31,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ### **2. Action Categories & Multipliers**
 
 **Visual Hierarchy:**
+
 ```
 🚴 Transport Actions (1.5x multiplier)
 ├── Cycling to work (+15 tokens)
@@ -47,6 +50,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ```
 
 **UI Implementation:**
+
 - **Color-coded category badges** with unique icons
 - **Multiplier animations** showing bonus calculations
 - **"Streak bonuses"** for consecutive days in same category
@@ -57,6 +61,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ### **3. Leaderboards - Social Competition**
 
 **Multi-Tier Recognition System:**
+
 ```jsx
 // Community Leaderboard Component
 <Leaderboard>
@@ -68,12 +73,14 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ```
 
 **Visual Design:**
+
 - **Animated rankings** with smooth position transitions
 - **Achievement badges** next to user names
 - **Progress bars** showing gap to next level
 - **"Rising star" indicators** for improving users
 
 **Social Elements:**
+
 - **Anonymous participation** option for privacy
 - **Team/household** competitions
 - **Neighborhood vs neighborhood** challenges
@@ -85,21 +92,25 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 **Badge Categories:**
 
 **🌟 Consistency Badges**
+
 - *"Week Warrior"* - 7 consecutive days of action
 - *"Month Champion"* - 30 consecutive days
 - *"Year Legend"* - 365 consecutive days
 
 **🎯 Milestone Badges**  
+
 - *"Century Club"* - 100 verified actions
 - *"Token Titan"* - 1,000 tokens earned
 - *"Governance Guru"* - Voted on 10 proposals
 
 **🏆 Impact Badges**
+
 - *"Carbon Crusher"* - Prevented 1 ton CO2
 - *"Community Builder"* - Proposed 3 funded projects
 - *"Verification Hero"* - Verified 100+ peer actions
 
 **UI Implementation:**
+
 ```jsx
 <AchievementNotification
   badge={newBadge}
@@ -116,6 +127,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 **Personal Dashboard Metrics:**
 
 **Circular Progress Rings:**
+
 ```
 ┌─────────────────┐
 │   Daily Goal    │
@@ -125,12 +137,14 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ```
 
 **Impact Visualizations:**
+
 - **Tree icons** representing CO2 offset
 - **House icons** showing energy saved
 - **Droplet animations** for water conservation
 - **Community skyline** showing collective impact
 
 **Voting Power Growth:**
+
 ```jsx
 <VotingPowerMeter>
   <CurrentLevel>Community Member</CurrentLevel>
@@ -148,6 +162,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ### **6. Social Features - Community Building**
 
 **Action Feed - Instagram for Sustainability:**
+
 ```jsx
 <CommunityFeed>
   <ActionPost>
@@ -165,6 +180,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ```
 
 **Verification as Social Game:**
+
 - **Peer review** becomes community engagement
 - **Verification badges** for accurate reviewers  
 - **"Trust score"** building through consistent verification
@@ -175,6 +191,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ### **7. Challenges & Events - Time-Limited Engagement**
 
 **Seasonal Challenges:**
+
 ```
 🍂 Fall Challenge: "Leaf & Learn"
 ├── Goal: Community composting drive
@@ -185,6 +202,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ```
 
 **UI Design:**
+
 - **Challenge timer** with countdown animation
 - **Community progress bar** toward shared goals
 - **Special challenge badges** with unique designs
@@ -195,6 +213,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ### **8. Governance Gamification - Making Democracy Fun**
 
 **Voting Interface:**
+
 ```jsx
 <ProposalCard>
   <VotingProgress>
@@ -215,6 +234,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ```
 
 **Democratic Engagement:**
+
 - **"Civic duty" streaks** for consistent voting
 - **Proposal creation** unlocked through participation
 - **Debate participation** rewarded with discussion tokens
@@ -227,12 +247,14 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ### **Animation Principles**
 
 **Token Earning Animation:**
+
 1. Action photo submission → Green checkmark pulse
 2. Verification complete → Token particles flow to balance  
 3. Balance increment → Number count-up with glow
 4. Achievement unlock → Confetti + badge reveal
 
 **Progress Animations:**
+
 - **Smooth progress bar** fills with satisfying easing
 - **Milestone celebrations** with particle effects
 - **Level-up sequences** with badge unlock ceremonies
@@ -240,15 +262,19 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ### **Color Psychology in Gamification**
 
 **Success States:** Forest Green (#22C55E)
+
 - Token earnings, completed actions, achievements
 
 **Progress States:** Ocean Blue (#3B82F6)  
+
 - Ongoing challenges, voting participation, community goals
 
 **Encouragement:** Mint (#A7F3D0)
+
 - Gentle nudges, helpful tips, positive reinforcement
 
 **Celebration:** Gold Accents (sparingly)
+
 - Major achievements, community milestones, special events
 
 ---
@@ -256,6 +282,7 @@ EcoDAO transforms environmental action from **obligation into engagement** throu
 ## **User Experience Flow**
 
 ### **New User Onboarding Gamification**
+
 ```
 Day 1: "First Steps" tutorial → 10 welcome tokens
 Day 2: First action submission → "Action Hero" badge  
@@ -264,6 +291,7 @@ Week 1: Complete → "Week One Wonder" achievement
 ```
 
 ### **Retention Mechanics**
+
 - **Daily login rewards** (small token bonuses)
 - **Week streak bonuses** (multiplier increases)
 - **Monthly challenges** (community-wide goals)
@@ -274,16 +302,19 @@ Week 1: Complete → "Week One Wonder" achievement
 ## **Psychological Impact**
 
 **Intrinsic Motivation Enhancement:**
+
 - **Autonomy:** Choose your environmental actions
 - **Mastery:** Progressive skill building in sustainability  
 - **Purpose:** Visible community impact from individual actions
 
 **Social Connection:**
+
 - **Community recognition** for consistent participation
 - **Peer verification** creates accountability and support
 - **Shared goals** build collective identity
 
 **Habit Formation:**
+
 - **Variable reward schedules** maintain engagement
 - **Clear progress tracking** provides satisfaction
 - **Social proof** reinforces positive behaviors

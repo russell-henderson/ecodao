@@ -16,10 +16,10 @@ const config = {
     hardhat: {
       chainId: 1337,
     },
-    mumbai: {
-      url: process.env.MUMBAI_RPC_URL || "https://rpc-mumbai.maticvigil.com",
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      chainId: 80001,
+    amoy: {
+      url: process.env.AMOY_RPC || "https://rpc-amoy.polygon.technology",
+      accounts: process.env.AMOY_PRIVATE_KEY ? [process.env.AMOY_PRIVATE_KEY] : [],
+      chainId: 80002,
     },
     polygon: {
       url: process.env.POLYGON_RPC_URL || "https://polygon-rpc.com",
@@ -30,7 +30,7 @@ const config = {
   etherscan: {
     apiKey: {
       polygon: process.env.POLYGONSCAN_API_KEY || "",
-      polygonMumbai: process.env.POLYGONSCAN_API_KEY || "",
+      polygonAmoy: process.env.POLYGONSCAN_API_KEY || "",
     },
   },
   gasReporter: {

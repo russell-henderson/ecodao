@@ -13,6 +13,7 @@
 ### Current Pain Points
 
 Communities lack coordinated mechanisms to:
+
 - Incentivize individual environmental actions
 - Democratically allocate resources for sustainability projects
 - Ensure transparency in funding decisions
@@ -30,6 +31,7 @@ Communities lack coordinated mechanisms to:
 ### Core Value Proposition
 
 EcoDAO creates a decentralized autonomous organization where:
+
 - **Residents earn governance tokens** for verified environmental actions
 - **Community votes** on sustainability project funding using earned tokens
 - **Transparent allocation** of resources through smart contracts
@@ -48,18 +50,21 @@ EcoDAO creates a decentralized autonomous organization where:
 ### Primary Users
 
 **Community Members (70% of users)**
+
 - Age: 25-55
 - Tech-savvy environmentalists
 - Active in local community initiatives
 - Comfortable with mobile apps and basic blockchain concepts
 
 **Project Proposers (20% of users)**
+
 - Local environmental organizations
 - Community leaders and activists
 - Small business owners with sustainability initiatives
 - Municipal government representatives
 
 **Verifiers (10% of users)**
+
 - Trusted community members
 - Environmental experts
 - Long-term platform participants
@@ -68,18 +73,21 @@ EcoDAO creates a decentralized autonomous organization where:
 ### User Personas
 
 **Sarah, the Eco-Conscious Parent (35)**
+
 - Wants to make a difference in her community
 - Limited time but motivated by environmental impact
 - Needs simple, mobile-friendly interface
 - Values transparency in how funds are used
 
 **Marcus, the Community Organizer (42)**
+
 - Runs local environmental non-profit
 - Needs funding for community garden project
 - Wants to engage more residents in sustainability
 - Requires clear proposal and voting process
 
 **Dr. Chen, the Environmental Expert (58)**
+
 - Retired environmental scientist
 - Wants to contribute expertise to community
 - Values data-driven decision making
@@ -92,12 +100,14 @@ EcoDAO creates a decentralized autonomous organization where:
 #### Core Features
 
 **1. User Authentication & Wallet Integration**
+
 - MetaMask wallet connection
 - WalletConnect support for mobile
 - Account creation and profile management
 - Network switching (Polygon Mumbai → Mainnet)
 
 **2. Action Submission System**
+
 - Photo upload with IPFS storage
 - Action type selection (composting, cycling, energy saving, etc.)
 - Form validation and submission
@@ -105,18 +115,21 @@ EcoDAO creates a decentralized autonomous organization where:
 - Action history and leaderboard
 
 **3. Community Verification**
+
 - Peer-to-peer verification system
 - Reputation-based verifier selection
 - Anti-spam cooldown mechanisms
 - Verification rewards and incentives
 
 **4. Token Economy**
+
 - EcoToken earning for verified actions
 - Token balance display and management
 - Voting power calculation based on token holdings
 - Token transfer and delegation capabilities
 
 **5. Governance System**
+
 - Proposal creation and submission
 - Voting interface with clear options
 - Proposal discussion and comments
@@ -124,12 +137,14 @@ EcoDAO creates a decentralized autonomous organization where:
 - Automatic fund release upon approval
 
 **6. Project Management**
+
 - Project proposal templates
 - Milestone tracking and reporting
 - Fund allocation and release
 - Progress updates and impact metrics
 
 **7. Community Features**
+
 - Community feed with real-time updates
 - Project showcase and impact stories
 - Member profiles and achievements
@@ -138,18 +153,21 @@ EcoDAO creates a decentralized autonomous organization where:
 #### Technical Requirements
 
 **Smart Contracts (Polygon)**
+
 - GreenToken.sol: ERC-20 governance token with voting extensions
 - GreenGovernor.sol: OpenZeppelin Governor for proposal voting
 - ActionRewards.sol: Token distribution for verified eco-actions
 - CommunityTreasury.sol: Automated funding of approved projects
 
 **Frontend (Next.js 13+)**
+
 - Responsive design (mobile-first)
 - Web3 integration with ethers.js
 - IPFS integration for file storage
 - Real-time updates and notifications
 
 **Storage & Infrastructure**
+
 - IPFS for decentralized file storage
 - Pinata for reliable IPFS pinning
 - Vercel for frontend deployment
@@ -158,24 +176,28 @@ EcoDAO creates a decentralized autonomous organization where:
 ### Non-Functional Requirements
 
 #### Performance
+
 - Page load time: < 3 seconds
 - Mobile responsiveness: 100% compatible
 - Image optimization: < 500KB per photo
 - Transaction confirmation: < 30 seconds
 
 #### Security
+
 - Smart contract audits (OpenZeppelin standards)
 - Input validation and sanitization
 - Role-based access control
 - Reentrancy protection
 
 #### Usability
+
 - Intuitive navigation (max 3 clicks to core features)
 - Clear error messages and loading states
 - Accessibility compliance (WCAG AA)
 - Multi-language support (English, Spanish)
 
 #### Scalability
+
 - Support for 1,000+ concurrent users
 - Handle 10,000+ actions per month
 - Efficient IPFS storage and retrieval
@@ -186,6 +208,7 @@ EcoDAO creates a decentralized autonomous organization where:
 ### Design System
 
 **Brand Colors (from Brand Guidelines)**
+
 - Primary: Forest Green (#22C55E) - CTAs, active states
 - Secondary: Ocean Blue (#3B82F6) - Links, governance elements
 - Success: Sage Green (#10B981) - Verified actions
@@ -194,10 +217,12 @@ EcoDAO creates a decentralized autonomous organization where:
 - Background: Pure White (#FFFFFF) - Foundation
 
 **Typography**
+
 - Primary Font: Inter (clean, modern, excellent readability)
 - Hierarchy: Display (48px+) → Headline (32-40px) → Subheading (20-24px) → Body (16px) → Caption (14px)
 
 **Layout Principles**
+
 - Mobile-first responsive design
 - Generous white space for clarity
 - 12-column grid system (max-width: 1200px)
@@ -206,6 +231,7 @@ EcoDAO creates a decentralized autonomous organization where:
 ### User Journey Maps
 
 #### New User Onboarding
+
 1. **Landing Page** → Clear value proposition and CTA
 2. **Wallet Connection** → Simple MetaMask integration
 3. **Profile Setup** → Basic information and preferences
@@ -214,6 +240,7 @@ EcoDAO creates a decentralized autonomous organization where:
 6. **Token Earned** → Celebration and explanation of voting power
 
 #### Action Submission Flow
+
 1. **Action Hub** → Browse action types and rewards
 2. **Photo Upload** → Drag-and-drop with compression
 3. **Form Completion** → Clear fields and validation
@@ -222,6 +249,7 @@ EcoDAO creates a decentralized autonomous organization where:
 6. **Reward** → Token earned and voting power updated
 
 #### Governance Participation
+
 1. **Proposal Discovery** → Browse active and past proposals
 2. **Proposal Review** → Detailed information and discussion
 3. **Voting Decision** → Clear options and impact explanation
@@ -231,24 +259,28 @@ EcoDAO creates a decentralized autonomous organization where:
 ### Key Screens
 
 **Dashboard**
+
 - Token balance and voting power
 - Recent actions and verification status
 - Active proposals requiring votes
 - Community impact metrics
 
 **Action Hub**
+
 - Action type selection with rewards
 - Photo upload interface
 - Submission form and validation
 - Action history and leaderboard
 
 **Governance Portal**
+
 - Proposal list with filtering
 - Voting interface with clear options
 - Proposal creation form
 - Discussion and comments
 
 **Community Feed**
+
 - Project updates and milestones
 - Member achievements and actions
 - Impact stories and metrics
@@ -259,6 +291,7 @@ EcoDAO creates a decentralized autonomous organization where:
 ### Smart Contract Design
 
 **GreenToken.sol**
+
 ```solidity
 contract GreenToken is ERC20, ERC20Permit, ERC20Votes {
     // ERC-20 with voting capabilities
@@ -269,6 +302,7 @@ contract GreenToken is ERC20, ERC20Permit, ERC20Votes {
 ```
 
 **GreenGovernor.sol**
+
 ```solidity
 contract GreenGovernor is Governor, GovernorSettings, 
                          GovernorCountingSimple, GovernorVotes {
@@ -280,6 +314,7 @@ contract GreenGovernor is Governor, GovernorSettings,
 ```
 
 **ActionRewards.sol**
+
 ```solidity
 contract ActionRewards is AccessControl, ReentrancyGuard {
     struct Action {
@@ -297,6 +332,7 @@ contract ActionRewards is AccessControl, ReentrancyGuard {
 ```
 
 **CommunityTreasury.sol**
+
 ```solidity
 contract CommunityTreasury is Ownable, ReentrancyGuard {
     struct Project {
@@ -315,6 +351,7 @@ contract CommunityTreasury is Ownable, ReentrancyGuard {
 ### Frontend Architecture
 
 **Technology Stack**
+
 - Next.js 13+ with App Router
 - React 18+ with TypeScript
 - Tailwind CSS for styling
@@ -324,6 +361,7 @@ contract CommunityTreasury is Ownable, ReentrancyGuard {
 - React Query for server state
 
 **Component Structure**
+
 ```
 src/
 ├── components/
@@ -352,18 +390,21 @@ Action Verification → Reward Calculation → Token Minting → Balance Update 
 ### Key Performance Indicators (KPIs)
 
 **User Engagement**
+
 - Daily Active Users (DAU)
 - Actions submitted per user per month
 - Voting participation rate
 - User retention (30-day, 90-day)
 
 **Community Impact**
+
 - Total actions verified
 - Projects funded and completed
 - Community growth rate
 - Environmental impact metrics
 
 **Technical Performance**
+
 - Transaction success rate
 - Page load times
 - Mobile usage percentage
@@ -372,12 +413,14 @@ Action Verification → Reward Calculation → Token Minting → Balance Update 
 ### Success Criteria
 
 **Hackathon Success**
+
 - Working demo with all core features
 - Smooth user experience across devices
 - Clear demonstration of value proposition
 - Technical implementation excellence
 
 **Long-term Success**
+
 - 1,000+ active community members
 - 10,000+ verified environmental actions
 - $100,000+ in community project funding
@@ -388,46 +431,55 @@ Action Verification → Reward Calculation → Token Minting → Balance Update 
 ### Technical Risks
 
 **Smart Contract Vulnerabilities**
+
 - Mitigation: Use OpenZeppelin standards, comprehensive testing
 - Contingency: Focus on frontend with mock contracts
 
 **IPFS Integration Issues**
+
 - Mitigation: Pinata service, fallback storage options
 - Contingency: Local storage for demo purposes
 
 **Web3 Connection Problems**
+
 - Mitigation: Multiple wallet support, clear error handling
 - Contingency: Offline mode with data sync
 
 ### Business Risks
 
 **Low User Adoption**
+
 - Mitigation: Strong onboarding, clear value proposition
 - Contingency: Focus on core users, iterate based on feedback
 
 **Regulatory Concerns**
+
 - Mitigation: Transparent operations, compliance focus
 - Contingency: Legal consultation, compliance updates
 
 **Competition**
+
 - Mitigation: Unique community focus, strong execution
 - Contingency: Feature differentiation, partnership strategy
 
 ## Launch Strategy
 
 ### Phase 1: Hackathon (72 hours)
+
 - Core smart contract development
 - Basic frontend interface
 - Demo preparation and testing
 - Video creation and submission
 
 ### Phase 2: Post-Hackathon (1-3 months)
+
 - User feedback integration
 - Mobile app development
 - Advanced features and analytics
 - Community building and outreach
 
 ### Phase 3: Scale (3-6 months)
+
 - Multi-community support
 - Partnership integrations
 - Advanced governance features

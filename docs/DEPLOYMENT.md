@@ -4,7 +4,7 @@ This guide covers how to build and deploy the EcoDAO project, including both the
 
 ## 📋 Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Git
 - MetaMask wallet
@@ -157,11 +157,13 @@ npm run dev
 ### Option 1: Vercel (Recommended for Frontend)
 
 1. **Install Vercel CLI**:
+
    ```bash
    npm i -g vercel
    ```
 
 2. **Deploy**:
+
    ```bash
    cd frontend
    vercel
@@ -180,17 +182,20 @@ npm run dev
 ### Option 3: Self-Hosted (VPS/Cloud)
 
 1. **Build the application**:
+
    ```bash
    npm run build
    ```
 
 2. **Use PM2 for process management**:
+
    ```bash
    npm install -g pm2
    pm2 start npm --name "ecodao-frontend" -- start
    ```
 
 3. **Configure Nginx** (example):
+
    ```nginx
    server {
        listen 80;

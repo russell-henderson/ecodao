@@ -3,6 +3,7 @@
 ## 🎨 Brand & Color System Setup
 
 ### Color Palette Implementation
+
 - [ ] Define Tailwind color palette in `tailwind.config.js`
 - [ ] Create CSS custom properties for brand colors
 - [ ] Set up Forest Green (#22C55E) for primary actions
@@ -11,6 +12,7 @@
 - [ ] Test color contrast ratios for accessibility
 
 ### Design Tokens
+
 - [ ] Create `styles/tokens.css` with brand variables
 - [ ] Define spacing scale (4px, 8px, 16px, 24px, 32px, 48px, 64px)
 - [ ] Set up typography hierarchy with Inter font
@@ -20,6 +22,7 @@
 ## 🎮 Gamification Components
 
 ### Token System UI
+
 - [ ] `<TokenBalance>` animated counter component
 - [ ] Token earning particle animation (green particles flow)
 - [ ] `<TokenEarningNotification>` popup component
@@ -27,6 +30,7 @@
 - [ ] Progress rings for daily/weekly goals
 
 ### Achievement System
+
 - [ ] `<AchievementBadge>` component with SVG icons
 - [ ] Badge unlock animation with confetti effect
 - [ ] `<AchievementGrid>` display component
@@ -34,6 +38,7 @@
 - [ ] "Next achievement" preview cards
 
 ### Leaderboard Components
+
 - [ ] `<Leaderboard>` with animated rankings
 - [ ] Top 3 special highlighting with podium design
 - [ ] User rank indicator with position change animations
@@ -41,6 +46,7 @@
 - [ ] Anonymous participation toggle
 
 ### Progress Visualization
+
 - [ ] `<ProgressRing>` circular progress component
 - [ ] Daily goal tracker with completion celebrations
 - [ ] Impact visualization (trees, houses, droplets)
@@ -50,6 +56,7 @@
 ## 🏛️ DAO Governance UI
 
 ### Proposal Interface
+
 - [ ] `<ProposalCard>` with voting progress bars
 - [ ] Vote buttons with token weight display
 - [ ] Proposal creation form with rich text editor
@@ -57,6 +64,7 @@
 - [ ] Results display with animated bars
 
 ### Governance Dashboard
+
 - [ ] Active proposals grid layout
 - [ ] User voting history component
 - [ ] Governance stats (participation rate, etc.)
@@ -64,6 +72,7 @@
 - [ ] Proposal status indicators (Active, Passed, Failed)
 
 ### Treasury Interface
+
 - [ ] `<TreasuryOverview>` with fund allocation charts
 - [ ] Project funding tracker
 - [ ] Milestone progress indicators
@@ -73,6 +82,7 @@
 ## 🎯 Action Submission System
 
 ### Action Form Components
+
 - [ ] `<ActionSubmissionForm>` with photo upload
 - [ ] Action category selector with icons
 - [ ] Photo compression and IPFS upload
@@ -80,6 +90,7 @@
 - [ ] Submission confirmation with reward preview
 
 ### Verification System
+
 - [ ] `<ActionVerificationCard>` for peer review
 - [ ] Verification voting interface
 - [ ] Verifier reputation display
@@ -87,6 +98,7 @@
 - [ ] Community verification queue
 
 ### Action Feed
+
 - [ ] `<CommunityActionFeed>` Instagram-style layout
 - [ ] Action post cards with photos
 - [ ] Like and encouragement buttons
@@ -96,6 +108,7 @@
 ## 📊 Dashboard Components
 
 ### Main Dashboard
+
 - [ ] Welcome header with user stats
 - [ ] Today's goals and progress
 - [ ] Quick action buttons (Submit Action, Vote, etc.)
@@ -103,6 +116,7 @@
 - [ ] Personal impact summary
 
 ### Statistics Visualization
+
 - [ ] `<ImpactChart>` using Recharts
 - [ ] Personal environmental impact metrics
 - [ ] Community comparison charts
@@ -112,6 +126,7 @@
 ## 🎪 Animation & Micro-interactions
 
 ### Core Animations
+
 - [ ] Token earning flow animation (action → tokens)
 - [ ] Button hover states (scale 1.02)
 - [ ] Loading states for all async operations
@@ -119,6 +134,7 @@
 - [ ] Form validation feedback animations
 
 ### Celebration Effects
+
 - [ ] Confetti animation for achievements
 - [ ] Particle effects for token earning
 - [ ] Progress bar completion celebrations
@@ -128,6 +144,7 @@
 ## 🔧 Technical Implementation
 
 ### Component Architecture
+
 - [ ] Create `/components/ui` folder with base components
 - [ ] Create `/components/gamification` for game elements
 - [ ] Create `/components/governance` for DAO features
@@ -135,6 +152,7 @@
 - [ ] Implement consistent prop interfaces
 
 ### State Management
+
 - [ ] Set up Zustand store for gamification state
 - [ ] Create Web3 connection state management
 - [ ] Implement optimistic UI updates
@@ -142,6 +160,7 @@
 - [ ] Handle offline state gracefully
 
 ### Responsive Design
+
 - [ ] Mobile-first component design
 - [ ] Touch-friendly interaction areas (44px minimum)
 - [ ] Responsive grid layouts
@@ -151,6 +170,7 @@
 ## 🎨 Visual Polish
 
 ### Icons & Graphics
+
 - [ ] Implement Lucide React icons consistently
 - [ ] Create custom SVG icons for actions
 - [ ] Design achievement badge graphics
@@ -158,6 +178,7 @@
 - [ ] Add empty state illustrations
 
 ### Typography
+
 - [ ] Implement Inter font with proper fallbacks
 - [ ] Set up heading hierarchy (48px, 32px, 24px, 20px)
 - [ ] Configure body text (16px) with 1.6 line height
@@ -167,6 +188,7 @@
 ## 🧪 Testing & Quality
 
 ### Component Testing
+
 - [ ] Unit tests for all gamification components
 - [ ] Visual regression testing with Chromatic
 - [ ] Accessibility testing with axe-core
@@ -174,6 +196,7 @@
 - [ ] Cross-browser compatibility testing
 
 ### User Experience Testing
+
 - [ ] Usability testing with target users
 - [ ] A/B test gamification elements
 - [ ] Monitor engagement metrics
@@ -183,6 +206,7 @@
 ## 🚀 Deployment Checklist
 
 ### Production Setup
+
 - [ ] Configure environment variables
 - [ ] Set up proper error boundaries
 - [ ] Implement analytics tracking
@@ -190,6 +214,7 @@
 - [ ] Set up monitoring and alerts
 
 ### Performance Optimization
+
 - [ ] Optimize bundle size with code splitting
 - [ ] Implement image optimization
 - [ ] Add proper caching headers
@@ -198,21 +223,24 @@
 
 ---
 
-## Priority Order for Hackathon:
+## Priority Order for Hackathon
 
 ### Day 1: Core UI (6-8 hours)
+
 - [ ] Brand colors and spacing system
 - [ ] Basic dashboard layout
 - [ ] Token balance display
 - [ ] Action submission form
 
-### Day 2: Gamification (6-8 hours) 
+### Day 2: Gamification (6-8 hours)
+
 - [ ] Achievement badges
 - [ ] Progress animations
 - [ ] Leaderboard component
 - [ ] Voting interface
 
 ### Day 3: Polish (4-6 hours)
+
 - [ ] Mobile responsiveness
 - [ ] Loading states
 - [ ] Error handling

@@ -5,6 +5,7 @@
 The idea for VerdDAO emerged from a simple yet profound realization: **individual environmental actions lack collective impact without community coordination**. As someone passionate about both sustainability and emerging technologies, I witnessed firsthand how neighborhoods struggle to organize meaningful environmental initiatives.
 
 In my own community, I observed residents composting, cycling to work, and installing solar panels—all commendable individual actions. Yet these efforts existed in isolation. There was no mechanism to:
+
 - **Recognize and reward** sustainable behaviors
 - **Democratically decide** on community environmental projects  
 - **Transparently allocate** funding for green initiatives
@@ -50,6 +51,7 @@ graph TD
 I built four interconnected smart contracts:
 
 #### 1. **GreenToken.sol** - The Governance Heart
+
 ```solidity
 contract GreenToken is ERC20, ERC20Permit, ERC20Votes {
     // Snapshot-based voting power
@@ -61,6 +63,7 @@ contract GreenToken is ERC20, ERC20Permit, ERC20Votes {
 **Key Innovation**: Combining OpenZeppelin's battle-tested ERC20Votes with custom reward mechanics ensures democratic governance scales with community growth.
 
 #### 2. **GreenGovernor.sol** - Democratic Decision Engine
+
 ```solidity
 contract GreenGovernor is Governor, GovernorSettings, 
                          GovernorCountingSimple, GovernorVotes {
@@ -71,13 +74,16 @@ contract GreenGovernor is Governor, GovernorSettings,
 ```
 
 #### 3. **ActionRewards.sol** - Incentive Mechanism
+
 The most complex component, handling:
+
 - **Action verification** through community consensus
 - **Anti-spam protection** via cooldown periods
 - **Dynamic reward calculation** based on action type and frequency
 - **Reputation system** for trusted verifiers
 
 #### 4. **CommunityTreasury.sol** - Transparent Fund Management
+
 - **Milestone-based releases** ensure project accountability
 - **Multi-signature requirements** for large expenditures
 - **Emergency pause functionality** for security
@@ -89,12 +95,14 @@ The most complex component, handling:
 I prioritized **user experience over technical complexity**, recognizing that community adoption depends on intuitive interfaces, not impressive code.
 
 #### Design Philosophy
+
 - **Generous white space** creates trust and clarity
 - **Forest green + ocean blue palette** balances environmental authenticity with technological sophistication  
 - **Mobile-first responsive design** ensures accessibility across devices
 - **Progressive enhancement** gracefully handles Web3 wallet complications
 
 #### Key Components
+
 ```typescript
 // Wallet integration that "just works"
 const useVerdaoWallet = () => {
@@ -114,6 +122,7 @@ const useGovernanceState = () => {
 **The Reality**: Web3 user experience remains challenging for mainstream adoption.
 
 **My Solution**: Progressive enhancement strategy
+
 1. **Educational onboarding** explains wallet setup without overwhelming
 2. **Clear transaction states** show pending/confirmed/failed with context
 3. **Fallback mechanisms** handle network issues gracefully
@@ -126,6 +135,7 @@ const useGovernanceState = () => {
 **Problem**: How do you verify real-world eco-actions without a central authority?
 
 **Solution**: **Community-based verification with reputation weighting**
+
 - Multiple community members verify each action
 - Verifiers build reputation through consistent, accurate assessments
 - Reputation weights their verification influence
@@ -136,6 +146,7 @@ const useGovernanceState = () => {
 **Problem**: Users might submit fake actions or spam the system for tokens.
 
 **Solution**: **Multi-layered protection**
+
 ```solidity
 mapping(address => uint256) public lastActionTime;
 mapping(ActionType => uint256) public dailyLimits;
@@ -159,6 +170,7 @@ modifier antiSpam(ActionType actionType) {
 **Problem**: High transaction costs could prevent community participation.
 
 **Solution**: **Strategic gas optimization**
+
 - Deployed on Polygon for 100x cheaper transactions
 - Batch operations where possible
 - EIP-2612 permits for gasless approvals
@@ -169,6 +181,7 @@ modifier antiSpam(ActionType actionType) {
 **Problem**: Wealthy actors could buy governance tokens and manipulate decisions.
 
 **Solution**: **Earn-only token acquisition**
+
 - Tokens can ONLY be earned through verified actions
 - No secondary market trading (intentionally non-transferable)
 - Proposal thresholds prevent spam while remaining accessible
@@ -199,6 +212,7 @@ modifier antiSpam(ActionType actionType) {
 ### Personal Growth
 
 This project pushed me to think **systemically** about complex problems:
+
 - How do individual incentives align with collective outcomes?
 - What governance mechanisms prevent both apathy and manipulation?
 - How does technology serve community building rather than replacing it?
@@ -206,25 +220,31 @@ This project pushed me to think **systemically** about complex problems:
 ## 💡 Innovation Highlights
 
 ### 1. **Action-to-Vote Pipeline**
+
 The direct connection between sustainable behaviors and governance power creates intrinsic motivation for environmental action.
 
 ### 2. **Community-Powered Verification**
+
 Eliminating central authorities while maintaining trust through reputation-weighted consensus.
 
 ### 3. **Milestone-Based Treasury**
+
 Automated fund release based on project progress prevents both corruption and project abandonment.
 
 ### 4. **Transparent Impact Tracking**
+
 On-chain records create auditable trails of community environmental initiatives.
 
 ## 🌍 Real-World Impact Potential
 
 ### Immediate Benefits
+
 - **Individual**: Recognition and influence for sustainable choices
 - **Community**: Democratic control over environmental initiatives  
 - **Environment**: Coordinated action creates measurable impact
 
 ### Scaling Potential
+
 ```
 Phase 1: Single neighborhood (500 residents)
 Phase 2: Municipal partnership (5,000 residents)  
@@ -233,9 +253,11 @@ Phase 4: Global platform (millions of communities)
 ```
 
 ### Economic Model
+
 $$\text{Community Treasury} = \sum_{i=1}^{n} \text{Municipal Grant}_i + \text{Carbon Credit Sales} + \text{Corporate Sponsorships}$$
 
 The platform becomes self-sustaining through:
+
 - Municipal environmental program funding
 - Carbon credit marketplace integration
 - Corporate sustainability partnerships
@@ -245,6 +267,7 @@ The platform becomes self-sustaining through:
 VerdDAO represents the **first step toward environmental federalism**—a world where communities govern their environmental destiny through transparent, democratic processes.
 
 **Next Features**:
+
 - **IoT integration** for automated action tracking
 - **AI-powered verification** reducing community moderation burden
 - **Cross-community collaboration** on regional environmental challenges
@@ -271,6 +294,7 @@ Climate change requires **collective action at community scale**. VerdDAO provid
 **The VerdDAO approach**: Bottom-up democracy with transparent incentives
 
 By combining blockchain governance, community verification, and transparent fund management, VerdDAO creates a new model for environmental action that is:
+
 - **Democratic** (community-controlled)
 - **Transparent** (blockchain-recorded)
 - **Incentivized** (action-based rewards)
@@ -281,6 +305,7 @@ This isn't just another hackathon project—it's a **prototype for environmental
 ## 🙏 Acknowledgments
 
 This project builds on the incredible work of:
+
 - **OpenZeppelin** for providing secure, audited smart contract primitives
 - **Polygon** for making blockchain governance accessible through low transaction costs
 - **The broader Web3 community** for pioneering decentralized governance mechanisms
